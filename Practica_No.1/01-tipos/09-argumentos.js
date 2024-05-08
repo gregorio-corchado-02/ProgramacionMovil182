@@ -1,0 +1,5 @@
+function suma(x,y){
+    return console.log(x + y);
+};
+
+suma(5,5);

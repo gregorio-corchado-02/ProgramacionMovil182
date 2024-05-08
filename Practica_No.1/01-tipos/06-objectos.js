@@ -12,3 +12,8 @@ let personaje ={
 
 
 console.log(personaje);
+console.log(personaje['escuela']);
+console.log(personaje.nombre);
+personaje.nombre = 'Roberto';
+console.log(personaje.nombre);
+
