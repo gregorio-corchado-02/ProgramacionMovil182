@@ -1,0 +1,3 @@
+function mayormenor(a,b){
+    
+};
