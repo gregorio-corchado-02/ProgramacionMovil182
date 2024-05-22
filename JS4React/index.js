@@ -42,4 +42,6 @@ document.body.append(boton)
 
 boton.addEventListener('click',function(){
     console.log('Evento click ejecutado')
+    titulo.innerText="Evento click ejecutado"
+    alert('Exito')
 })
