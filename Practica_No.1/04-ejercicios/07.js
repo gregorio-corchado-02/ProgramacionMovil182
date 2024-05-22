@@ -1,5 +1,9 @@
-function precioCompleto (precio, impuesto) { 
-    return precio + precio * impuesto;
-}
-let resultado = precioCompleto (19.90, 0.15); 
-console.log(resultado);
+function calculadora(precio,impuesto){
+    let total;
+
+    total = precio+(precio*impuesto);
+
+    return console.log(total);
+};
+
+calculadora(19.90, 0.15);
