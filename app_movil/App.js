@@ -1,29 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
 
-const Texto = ({ styles }) => {
-  const [contenido, setContenido] = useState('hola mundoo');
-  const actualizarContenido = () => {
-    setContenido('State actualizo este texto');
-  };
 
-  return (
-    <Text style={[styles.Text, styles]} onPress={actualizarContenido}>
-      {contenido}
-    </Text>
-  );
-};
 
 export default function App() {
+  const [text, setText] = useState('valor default')
+  const [sumit, setSumit]= useState('')
   return (
     <View style={styles.container}>
-      <Text style={styles.red}>Hola Mundo</Text>
-      <Text style={styles.blue}>Hola Mundo</Text>
-      <Text style={styles.green}>Hola Mundo</Text>
-      <Texto styles={styles.Text} />
-      <StatusBar style="auto" />
-      <Button title="Presiona" color="#000000" />
+      <Text>Conpote Input: {sumit}</Text>
+      <TextInput style={styles.input} onChangeText={ (t)=>setText(t) } Value={text}/>
+      <Button title='presiona' onPress={ ()=>{ setSumit(text); alert('texto enviado') } }></Button>     
     </View>
   );
 }
@@ -32,26 +20,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     alignItems: 'center',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
   },
 
-  Text: {
-    color: 'yellow',
-    fontSize: 25,
-    height: 150,
+  input: {
+    backgroundColor:'#7607D3',
+    borderBottomColor:'#000000',
+    borderBottomWidth:1,
+    width:'80%',
+    height:40,
   },
 
-  red: {
-    backgroundColor: 'red',
-  },
-
-  blue: {
-    backgroundColor: 'blue',
-  },
-
-  green: {
-    backgroundColor: 'green',
-  },
 });
