@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, ScrollView, Dimensions} from 'react-native';
 
 
 
@@ -9,9 +9,48 @@ export default function App() {
   const [sumit, setSumit]= useState('')
   return (
     <View style={styles.container}>
-      <Text>Conpote Input: {sumit}</Text>
-      <TextInput style={styles.input} onChangeText={ (t)=>setText(t) } Value={text}/>
-      <Button title='presiona' onPress={ ()=>{ setSumit(text); alert('texto enviado') } }></Button>     
+      <ScrollView style={styles.ScrollView}>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <Text>Conpote Input: {sumit}</Text>
+        <TextInput style={styles.input} onChangeText={ (t)=>setText(t) } Value={text}/>
+        <Button title='presiona' onPress={ ()=>{ setSumit(text); alert('texto enviado') } }></Button>
+      </ScrollView>     
     </View>
   );
 }
@@ -31,6 +70,10 @@ const styles = StyleSheet.create({
     borderBottomWidth:1,
     width:'80%',
     height:40,
+  },
+
+  ScrollView: {
+    width:Dimensions.get('window').width
   },
 
 });
