@@ -1,56 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, ScrollView, Dimensions} from 'react-native';
+import { StyleSheet, Text, View, FlatList} from 'react-native';
 
 
 
 export default function App() {
-  const [text, setText] = useState('valor default')
-  const [sumit, setSumit]= useState('')
+
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.ScrollView}>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <Text>Conpote Input: {sumit}</Text>
-        <TextInput style={styles.input} onChangeText={ (t)=>setText(t) } Value={text}/>
-        <Button title='presiona' onPress={ ()=>{ setSumit(text); alert('texto enviado') } }></Button>
-      </ScrollView>     
+      <FlatList
+        data={[
+          {key:'1', name:'Gregorio'},
+          {key:'2', name:'Gadiel'},
+          {key:'3', name:'Antonio'},
+          {key:'4', name:'Kevin'},
+          {key:'5', name:'Ricarda'},
+
+        ]}
+        renderItem={({item}) => <Text style={styles.item}>{item.name}</Text>}
+      />
     </View>
   );
 }
@@ -60,20 +28,17 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#FFFFFF',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'center',
+    paddingTop: 40,
   },
 
-  input: {
-    backgroundColor:'#7607D3',
-    borderBottomColor:'#000000',
+  item:{
+    padding: 10,
+    fontSize: 24,
+    height: 50,
+    borderColor:'Red',
     borderBottomWidth:1,
-    width:'80%',
-    height:40,
-  },
-
-  ScrollView: {
-    width:Dimensions.get('window').width
   },
 
 });
