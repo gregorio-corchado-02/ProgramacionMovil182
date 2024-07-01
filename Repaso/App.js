@@ -1,65 +1,45 @@
-// App.js
-import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, ImageBackground } from 'react-native';
-import SplashScreen from './SplashScreen'; // Importa el componente Splash Screen
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, Button, ImageBackground, FlatList } from 'react-native';
+import backgroundImage from './assets/images/fondo.jpg';
+
+const Datos = [
+  { key: '1', nombre: 'El Exorcista' },
+  { key: '2', nombre: 'El Resplandor' },
+  { key: '3', nombre: 'El Conjuro' },
+  { key: '4', nombre: 'La Bruja' },
+  { key: '5', nombre: 'Actividad Paranormal' },
+];
 
 export default function App() {
-  const [nombre, setNombre] = useState('');
-  const [apellido, setApellido] = useState('');
-  const [correo, setCorreo] = useState('');
-  const [isLoading, setIsLoading] = useState(true); // Estado para controlar la carga
+  const [textoBusqueda, setTextoBusqueda] = useState('');
+  const [datosFiltrados, setDatosFiltrados] = useState(Datos);
 
-  useEffect(() => {
-    // Simular una carga inicial
-    setTimeout(() => {
-      setIsLoading(false); // Cuando la carga termina, se oculta el Splash Screen
-    }, 2000); // Simula 2 segundos de carga
-  }, []);
-
-  if (isLoading) {
-    return <SplashScreen />; // Muestra el Splash Screen mientras isLoading sea true
-  }
+  const buscar = () => {
+    const filtrados = Datos.filter(item => 
+      item.nombre.toLowerCase().includes(textoBusqueda.toLowerCase())
+    );
+    setDatosFiltrados(filtrados);
+  };
 
   return (
-    <ImageBackground source={require('./assets/images/fondo.jpg')} style={styles.image}>
+    <ImageBackground source={backgroundImage} style={styles.background}>
       <View style={styles.container}>
-        <View style={styles.formContainer}>
-          <Text>Nombre: </Text>
-          <TextInput
-            style={styles.input}
-            value={nombre}
-            onChangeText={(n) => setNombre(n)}
-            placeholder="Ingresa tu nombre"
-          />
-
-          <Text>Password: </Text>
-          <TextInput
-            style={styles.input}
-            value={apellido}
-            onChangeText={(a) => setApellido(a)}
-            secureTextEntry={true}
-            placeholder="Ingresa tu Password"
-          />
-
-          <Text>Correo: </Text>
-          <TextInput
-            style={styles.input}
-            value={correo}
-            onChangeText={(c) => setCorreo(c)}
-            placeholder="Ingresa tu correo"
-            keyboardType="email-address"
-          />
-
-          <StatusBar style="auto" />
-
-          <Button
-            title='Presiona'
-            onPress={() => {
-              alert(`Nombre: ${nombre}\nApellido: ${apellido}\nCorreo: ${correo}`);
-            }}
-          />
+        <Text style={styles.titulo}>Buscador de Películas</Text>
+        <TextInput
+          style={styles.entrada}
+          placeholder="Nombre de la Pelicula"
+          placeholderTextColor="#fff"
+          value={textoBusqueda}
+          onChangeText={setTextoBusqueda}
+        />
+        <View style={styles.contenedorBoton}>
+          <Button title="Buscar" onPress={buscar} />
         </View>
+        <FlatList
+          data={datosFiltrados}
+          keyExtractor={(item) => item.key}
+          renderItem={({ item }) => <Text style={styles.elemento}>{item.nombre}</Text>}
+        />
       </View>
     </ImageBackground>
   );
@@ -69,34 +49,43 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start', 
+    paddingTop: 50, 
     padding: 20,
   },
-  formContainer: {
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
-    width: '90%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 1,
+
+  titulo: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 20, 
+    color: 'white',
   },
-  input: {
+
+  entrada: {
+    borderBottomColor: 'white',
+    borderBottomWidth: 1,
+    width: '80%',
     height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 20,
-    paddingHorizontal: 10,
-    width: '100%',
+    color: 'white', 
+    marginBottom: 20, 
   },
-  image: {
+
+  contenedorBoton: {
+    width: '80%', 
+    marginTop: 20, 
+  },
+
+  elemento: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+    color: 'white', 
+  },
+
+  background: {
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',
   },
 });
-
