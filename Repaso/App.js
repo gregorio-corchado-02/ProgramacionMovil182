@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ImageBackground, FlatList } from 'react-native';
 import backgroundImage from './assets/images/fondo.jpg';
+import Prueba from './screens/Prueba';
 
 const Datos = [
   { key: '1', nombre: 'El Exorcista' },
@@ -11,37 +12,38 @@ const Datos = [
 ];
 
 export default function App() {
-  const [textoBusqueda, setTextoBusqueda] = useState('');
-  const [datosFiltrados, setDatosFiltrados] = useState(Datos);
+  // const [textoBusqueda, setTextoBusqueda] = useState('');
+  // const [datosFiltrados, setDatosFiltrados] = useState(Datos);
 
-  const buscar = () => {
-    const filtrados = Datos.filter(item => 
-      item.nombre.toLowerCase().includes(textoBusqueda.toLowerCase())
-    );
-    setDatosFiltrados(filtrados);
-  };
+  // const buscar = () => {
+  //   const filtrados = Datos.filter(item => 
+  //     item.nombre.toLowerCase().includes(textoBusqueda.toLowerCase())
+  //   );
+  //   setDatosFiltrados(filtrados);
+  // };
 
   return (
-    <ImageBackground source={backgroundImage} style={styles.background}>
-      <View style={styles.container}>
-        <Text style={styles.titulo}>Buscador de Películas</Text>
-        <TextInput
-          style={styles.entrada}
-          placeholder="Nombre de la Pelicula"
-          placeholderTextColor="#fff"
-          value={textoBusqueda}
-          onChangeText={setTextoBusqueda}
-        />
-        <View style={styles.contenedorBoton}>
-          <Button title="Buscar" onPress={buscar} />
-        </View>
-        <FlatList
-          data={datosFiltrados}
-          keyExtractor={(item) => item.key}
-          renderItem={({ item }) => <Text style={styles.elemento}>{item.nombre}</Text>}
-        />
-      </View>
-    </ImageBackground>
+    // <ImageBackground source={backgroundImage} style={styles.background}>
+    //   <View style={styles.container}>
+    //     <Text style={styles.titulo}>Buscador de Películas</Text>
+    //     <TextInput
+    //       style={styles.entrada}
+    //       placeholder="Nombre de la Pelicula"
+    //       placeholderTextColor="#fff"
+    //       value={textoBusqueda}
+    //       onChangeText={setTextoBusqueda}
+    //     />
+    //     <View style={styles.contenedorBoton}>
+    //       <Button title="Buscar" onPress={buscar} />
+    //     </View>
+    //     <FlatList
+    //       data={datosFiltrados}
+    //       keyExtractor={(item) => item.key}
+    //       renderItem={({ item }) => <Text style={styles.elemento}>{item.nombre}</Text>}
+    //     />
+    //   </View>
+    // </ImageBackground>
+    <Prueba/>
   );
 }
 
