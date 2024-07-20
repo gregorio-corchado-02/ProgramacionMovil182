@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 function HomeScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Estás en el Screen principal</Text>
+      <Text>Home!</Text>
     </View>
   );
 }
@@ -14,7 +14,7 @@ function HomeScreen() {
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Estás en el Screen de configuración</Text>
+      <Text>Settings!</Text>
     </View>
   );
 }
@@ -25,9 +25,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home"  component={HomeScreen}/> 
-        <Tab.Screen name="Configuracíon" component={SettingsScreen} />
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
+
